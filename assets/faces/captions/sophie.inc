@@ -1,0 +1,1 @@
+Sophie and Barbara<br /><i>Galveston, Texas</i>

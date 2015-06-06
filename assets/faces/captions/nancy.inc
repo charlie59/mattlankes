@@ -1,0 +1,1 @@
+Nancy<br /><em>Premiere Magazine<br />Lockhart, Texas</em>

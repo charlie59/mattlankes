@@ -1,0 +1,1 @@
+Buffy bowling<br /><em>Texas Monthly<br />Blanco, Texas</em>

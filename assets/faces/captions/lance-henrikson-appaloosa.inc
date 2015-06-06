@@ -1,0 +1,1 @@
+Lance Henrikson<br /><em>Appaloosa</em>

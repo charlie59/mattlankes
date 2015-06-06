@@ -1,0 +1,1 @@
+Peace Ball<br /><em>London</em>
