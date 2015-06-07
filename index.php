@@ -1,66 +1,26 @@
 <?php
+
+date_default_timezone_set('America/Chicago');
+
+
 class Page
 {
 
-	// photo sections
-	var $faces = array (
-'allison', 'baeworkers', 'caroline', 'chiefacevedo', 'cindy', 'derek', 'guyforsyth', 'lancearmstrong', 'sineadhowth', 'twins', 'willaelidarden',
-'abby', 'adrianne', 'amy', 'bethandhannah', 'billyjoeshaver', 'brianna',
-'damianandboys', 'gregkinnear2011', 'jamie', 'katandtristan', 'kathyvalentine', 'katiewaller',
-'kay', 'lily', 'melanie', 'mirandacover', 'mirandalambert', 'patriciajumping',
-'robertpatricia', 'robertrodriguez', 'sanjaygupta', 'taylor', 'willie2011',
-'willie','keanu','jeybo-belize','trio','samshepard','winona',
-'sophie','ethanmay05','hannah','downey','sineadside','gaelgarciabernal',
-'nancy','jacksonmay05','buffybowling','woody','tommyleejones','virgin',
-'statham','whitneyleaf','rory','ricklinklater','kat','lizcarpenter',
-'Vivian','viggo-mortensen','appaloosa-sheriff','argos-maccallum-appaloosa','dancers','erin-nic-marathon',
-'erin-marathon','jeremy-irons-appaloosa','lance-henrikson-appaloosa','pinetop-perkins','reneezel','Andrea'
-);
-
-	var $places = array (
-'bats2011', 'bluebonnets2011', 'centralpark2011', 'frigatebirds2011', 'iloveyousomuch2011', 'lakeaustinducks2011', 'marathonsign2011', 'pigeons2011', 'pumpjack2011', 'sitkacemetery2011', 'windmills2011',
-'monumentflag','seal','zebras','cactus','wedding','frenchcountryside',
-'morocco','horses','big-ben','albino-peacock','chicago-towers','gear',
-'rrsign','crosspalms','oliver','dino-santa-monica','highland-cow-scotland','train',
-'lighthouse-lake-michigan','lighthouse-maine','frenchfenceline','london-birds','liberty','willieluck',
-'peace-ball-london','irishchair','horsescowboy','freeandkaya','viaductchaumont','seagulls',
-'pumpjack-midland','san-francisco','santa-fe','hyde-park-swan','tree-tennessee','westminster-abbey');
-
-	var $music = array (
-'2011billyjoe1', '2011billyjoe2', '2011billyjoe3', '2011byrne', '2011crosscanadian', '2011loslonely', '2011rubyjane', '2011rubyjane2', '2011shawncolvin', '2011spoon', '2011woodsboss',
-'ACL-cityscape','arc-angels-alamo','austin-family-jewels','blues-traveller','brennen-leigh','charlie','chris-martin','coldplay','darden-smith','flatlanders','franz-ferdinand','grady','jane-bond','jet','joss-stone','lyle-lovett','MIA','nic-armstrong','oasis','paolo-nutini','patricia-vonne','pete-yorn','pinetop-perkins2','regina-spektor','seth-and-brennen','wilco','willie-playing-chess-luck,tx','ziggy-1','ianmoore','ziggy-4');
-
-	var $livestrong = array (
-'west','daoud','rothaus','cohen','dolezal','edwards',
-'clark','riner','gomez','family','herron','cusack',
-'albee','griffith','aldredge','dilbeck','nohr','behnke',
-'gillespie','phillips','atkins','gialella','theobat','lino',
-'pax','vangiesen','swanson','bennett','eskimo','zavala');
-
-	var $fastfoodnation = array (
-'albino','anaclaudia','ashleyjohnson','avrillavigne','bobbycanavalle','catalina',
-'cattle','cow24','cowprocessing1','cowprocessing2','cowprocessing3','cowprocessing4',
-'ethanhawkeffn','evahernandez','ffnposter','franciscorosales','frankertl','gregkinnear',
-'guillermoperez','juancarlosserran','kriskristoffersonffn','loupucci','luisguzman','magdaleno',
-'makingthecrossing','pauldano','safetyman','transportvan','trimmingline','wilmervalderrama');
-
-	var $chevy = array (
-'chevy20s', 'chevy30s', 'chevy40s1', 'chevy40s2', 'chevy50s', 'chevy50sgirl', 'chevy50sgirl2', 'chevy70s', 'chevydogs', 'chevysx-70');
-
-	var $stills = array (
-'appaloosa_01', 'appaloosa_02', 'appaloosa_03', 'appaloosa_04', 'appaloosa_05', 'appaloosa_06',
-'appaloosa_07', 'appaloosa_08', 'appaloosa_09', 'appaloosa_10', 'appaloosa_11', 'appaloosa_12',
-'appaloosa_13', 'appaloosa_14', 'appaloosa_15',
-'ascanner_1', 'ascanner_2', 'ascanner_3', 'ascanner_4', 'ascanner_5', 'djqualls',
-'downtownfordemocracy_01', 'downtownfordemocracy_02', 'downtownfordemocracy_03',
-'heathergraham', 'kriskristofferson','patriciaarquette', 'patriciavonne',
-'theking_01', 'theking_02', 'theking_03', 'theking_04', 'theking_05', 'theking_06', 'theking_07', 'theking_08', 'theking_09',
-'theking_10', 'theking_11', 'theking_12', 'theking_13', 'theking_14', 'theking_15', 'theking_16', 'theking_17', 'theking_18',
-'wendellbaker_00', 'wendellbaker_01', 'wendellbaker_02', 'wendellbaker_03', 'wendellbaker_04', 'wendellbaker_05'
-);
-
-	var $path = '/vservers/mattlankescom/htdocs';
+	var $path;
+	var $dev;
 	var $rowLimit = 10;
+	
+	public function __construct() {
+		require (__DIR__ . '/photo_sections.php');
+		$local_path = '/Users/charlie/Sites/Matt Lankes/mattlankes';
+		$remote_path = '/webspace/httpdocs/mattlankes.com/index.php';
+		if (is_dir($local_path)) {
+			$this->path = $local_path;
+			$this->dev = 1;
+		} else {
+			$this->path = $remote_path;
+		}
+	}
 
 	function parse_uri()
 	{
@@ -95,9 +55,15 @@ class Page
 			<li><a href="/stills"';
 			if ($control == 'stills') echo ' class="selected"';
 			echo '>Stills</a></li>
-			<li><a href="/chevy"';
-			if ($control == 'chevy') echo ' class="selected"';
-			echo '>Chevy</a></li>
+			<li><a href="/peru"';
+			if ($control == 'peru') echo ' class="selected"';
+			echo '>Peru</a></li>
+			<li><a href="/advertising"';
+			if ($control == 'advertising') echo ' class="selected"';
+			echo '>Advertising</a></li>
+			<li><a href="/boyhood"';
+			if ($control == 'boyhood') echo ' class="selected"';
+			echo '>Boyhood</a></li>
 			<li><a href="/livestrong"';
 			if ($control == 'livestrong') echo ' class="selected"';
 			echo '>LiveStrong</a></li>
@@ -158,7 +124,22 @@ class Page
 	{
 
 		$a=$this->$control;
-		$picsonpage=count($a);
+		if (isset($a)) {
+			$picsonpage=count($a);
+			$suffix = 1;
+		} else {
+			$dir = $this->path . '/assets/' . $control . '/pics';
+			$tmp = scandir($dir);
+			foreach ($tmp as $img) {
+				if (stripos($img, '.jpg') !== FALSE) {
+					$a[] = $img;
+				}
+			}
+			$picsonpage=count($a);
+			$suffix = 0;
+		}
+		
+		// print_r($a);
 
 		switch ($control):
 
@@ -231,34 +212,6 @@ I tried to capture their &ldquo;spirit of survivorship&rdquo; for the <a href="h
 They are amazing and incredibly strong!</div>
 ';
 
-				print '
-<table id="thumbs">
-  	<tr>';
-
-				for ($i=0;$i<$picsonpage;$i++):
-
-					if ($i==$rand) {
-
-						print '<td id="thumbstd"><a href="http://www.laf.org"><img width="100" height="100" src="/assets/laf_logo.gif" alt="Lance Armstrong Foundation" /></a></td>';
-
-					} else {
-
-						print '
-   		<td id="thumbstd"><a href="/'.$control.'/'.$i.'"><img width="100" height="100" src="/assets/'.$control.'/thumbs/'.$a[$i].'.jpg" alt="" /></a></td>';
-
-					}
-
-					if (($i<$picsonpage)&&(($i+1)%$this->rowLimit==0)) print '
-	</tr>
-  	<tr>
-';
-
-   				endfor;
-
-   			print '
-  	</tr>
-</table>
-';
 				break;
 
 			case 'fastfoodnation':
@@ -271,53 +224,47 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 </div>
 ';
 
-				print '
-<table id="thumbs">
-  	<tr>';
-
- 				for ($i=0;$i<$picsonpage;$i++):
-
-					print '
-   		<td id="thumbstd"><a href="/'.$control.'/'.$i.'"><img width="100" height="100" src="/assets/'.$control.'/thumbs/'.$a[$i].'.jpg" alt="" /></a></td>';
-
-					if (($i<$picsonpage)&&(($i+1)%$this->rowLimit==0)) print '
-	</tr>
-  	<tr>
-';
-
-   				endfor;
-
-   			print '
-  	</tr>
-</table>
-';
 			break;
 
 
-			default:
-
-				print '
-<table id="thumbs">
-  	<tr>';
-
- 				for ($i=0;$i<$picsonpage;$i++):
-
-					print '
-   		<td id="thumbstd"><a href="/'.$control.'/'.$i.'"><img width="100" height="100" src="/assets/'.$control.'/thumbs/'.$a[$i].'.jpg" alt="" /></a></td>';
-
-					if (($i<$picsonpage)&&(($i+1)%$this->rowLimit==0)) print '
-	</tr>
-  	<tr>
-';
-
-   				endfor;
-
-   			print '
-  	</tr>
-</table>
-';
 
 		endswitch;
+
+		print '
+<div id="thumbs">
+';
+
+ 		for ($i=0;$i<$picsonpage;$i++):
+
+			print '
+   		<div id="thumbstd">';
+   		
+   			if  ((isset($rand)) && ($i==$rand)) {
+
+				print '<a href="http://www.laf.org"><img width="100" height="100" src="/assets/laf_logo.gif" alt="Lance Armstrong Foundation" /></a></div>';
+
+			} else {
+   			
+   				$src = '/assets/'.$control.'/thumbs/'.$a[$i];
+   				if ($suffix === 1) {
+   					$src .= '.jpg';
+   				}
+   				if ( ! file_exists($this->path . $src)) {
+   					$src = '/assets/'.$control.'/pics/'.$a[$i];
+   				}
+
+   				
+   				print '<a href="/'.$control.'/'.$i.'"><img width="100" height="100" src="' . $src . '" alt="" /></a></div>';
+   			
+   			}
+
+   		endfor;
+
+   		print '
+
+</div>
+';
+
 
 	}
 
@@ -326,6 +273,20 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 	{
 
 		$a=$this->$section;
+		$suffix = 1;
+		
+		if ( ! isset($a)) {
+			$dir = $this->path . '/assets/' . $section . '/pics';
+			$tmp = scandir($dir);
+			foreach ($tmp as $img) {
+				if (stripos($img, '.jpg') !== FALSE) {
+					$a[] = $img;
+				}
+			}
+			$suffix = 0;
+		}
+
+		
 		$picname=$a["$pic"];
 		$picsonpage=count($a);
 		$l = $picsonpage - 1;
@@ -335,25 +296,31 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 
 		$left='<a href=\"/$section/$prev\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/left_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
 		$right='<a href=\"/$section/$next\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/right_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
-		eval ("\$j=\"$left\";");
-		eval ("\$k=\"$right\";");
+		eval ("\$k=\"$left\";");
+		eval ("\$j=\"$right\";");
 
-		if (file_exists($this->path."/assets/$section/pics/$picname.jpg")) list($width,$height,$type,$attr)=getimagesize($this->path."/assets/$section/pics/$picname.jpg");
-
-		print '
-    		<table>
-        		<tr valign="top">
-          			<td id="arrows">'.$k;
-
-		if (file_exists($this->path."/assets/$section/captions/$picname.inc")) {
-			print ' <div id="caption">';
-			include_once($this->path."/assets/$section/captions/$picname.inc");
-			print '</div>';
+		$src = "/assets/$section/pics/$picname";
+		if ($suffix === 1) $src .= '.jpg';
+	
+		if (file_exists($this->path.$src)) {
+			list($width,$height,$type,$attr)=getimagesize($this->path.$src);
+			if ($width > 800) $width=800;
 		}
 
-		print $j.'</td>
-          			 <td><img src="/assets/'.$section.'/pics/'.$picname.'.jpg" width="'.$width.'" height="'.$height.'" border="0" alt="" /><!--<p>'.$picname.'</p>--></td>
-        		</tr>
+		print '
+    		<div id="pic">
+          		<div id="arrows">'.$k;
+
+		print ' <div id="caption">';
+		if (file_exists($this->path."/assets/$section/captions/$picname.inc")) {
+			include_once($this->path."/assets/$section/captions/$picname.inc");
+		} else {
+			if ($this->dev === 1) print($picname);
+		}
+		print '</div>';
+
+		print $j.'</div>
+          		<div id="mainpic" style="max-width: ' . $width. 'px"><img src="'.$src.'" border="0" alt="" /><!--<p>'.$picname.'</p>--></div>
     		</table>
 
 ';
@@ -363,13 +330,13 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 }
 
 $page=new Page;
+
 ?><!DOCTYPE html>
 <html lang="en-us">
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="keywords" content="Matt Lankes Photography, Matt Lankes, Photography" />
 <link type="text/css" rel="stylesheet" href="/assets/style.css" media="screen" />
-<!--[if IE]><link type="text/css" rel="stylesheet" href="/assets/ie.css" /><![endif]-->
 <title>Matt Lankes Photography</title>
 </head>
 <body>
@@ -377,8 +344,8 @@ $page=new Page;
 $page->content();
 echo '
 <div id="copyright">
-	<p>&copy; Matt Lankes 2001-'.date("Y").'. All rights reserved.</p>
-	<p>Prints available. <a href="mailto:MattLankes@mac.com">Ask Matt</a> for prices and sizes.</p>
+	<p>&copy; Matt Lankes 2001-'.date("Y").'. All rights reserved.<br />
+	Prints available. <a href="mailto:MattLankes@mac.com">Ask Matt</a> for prices and sizes.</p>
 </div>
 </body>
 </html>';

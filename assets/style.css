@@ -19,85 +19,231 @@ body, div, ul, li {
 	list-style: none;
 }
 
-div#logo {
-	float: right;
-	z-index: 500;
-	position: relative;
-	top: -2px;
-	background-color: #707b00;
-}
-
 div#home {
 	margin-left:225px;
 	padding-top: 42px;
 }
 
-div#nav {
-	margin: 10px 0 30px 0;
-	padding-left: 8px;
-	padding-bottom: 3px;
-	border-bottom: 3px solid #000000;
+@media screen and (min-width: 1054px) {
+
+	div#logo {
+		z-index: 500;
+		padding: 1em;
+		background-color: #707b00;
+	}
+
+	div#nav {
+		margin: 10px 0 30px 0;
+		padding-left: 8px;
+		padding-bottom: 3px;
+		border-bottom: 3px solid #000000;
+	}
+
+	div#nav ul {
+		font-size: 14px;
+		font-weight: bold;
+		/*font-family: "Helvetica Neue", Futura, Verdana, sans-serif;*/
+	}
+
+	div#nav ul li{
+		display: inline;
+		letter-spacing: 1px;
+		line-height: 130%;
+		padding-right: 6px;
+		border-right: 1px #ffffff solid;
+	}
+
+	div#nav ul li.first {
+		padding-left: 66px;
+	}
+
+	div#nav ul li.last {
+		border-right: 0;
+	}
+
+	div#nav ul li a {
+		color: #ffffff;
+		text-decoration: none;
+	}	
+
+	div#nav ul li a:hover {
+		color: #cc0033;
+	}
+	
+	#thumbs {
+		margin-left:70px;
+	}
+	
+	#thumbstd {
+		padding: 2px;
+		margin: 0px;
+		float: left;
+	}
+	
+	#copyright {
+		font-size:8pt;
+		margin-top:50px;
+		float: left;
+  		margin-left: 12em;
+  		clear: left;
+	}
+	
+	#pic {
+		margin-left: 1em;
+	}
+	
+	#mainpic {
+		float:left;
+	}
+	
+	#arrows {
+		width:200px;
+		max-width: 200px;
+		text-align:right;
+		float: left;
+	}
+	
+	#mainpic {
+		margin-left: 2em;
+	}
+	
+	#mainpic img {
+		width: 100%;
+	}
+	
+	img.arrow {
+		padding:20px;
+	}
+	
+	#caption {
+		font-size: 8pt;
+		line-height: 150%;
+	}
+	
+	div#bio {
+		width:350px;
+		margin:21px;
+	}
+	
+	#address {
+		position:absolute;
+		top:42px;
+		left:410px;
+	}
+
+	#topnote {
+		margin-left:70px;
+		margin-bottom:10px;
+		line-height: 150%;
+	}
+
 }
 
-div#nav ul {
-	font-size: 14px;
-	font-weight: bold;
-	/*font-family: "Helvetica Neue", Futura, Verdana, sans-serif;*/
+@media screen and (max-width: 1053px) {
+
+	div#logo {
+		float: left;
+		z-index: 500;
+		position: relative;
+		top: 12px;
+		background-color: #707b00;
+	}
+
+	div#nav {
+		margin: 10px 0 30px 0;
+		padding-left: 8px;
+		padding-bottom: 3px;
+		border-bottom: 3px solid #000000;
+		float: left;
+		clear: left;
+	}
+
+	div#nav ul {
+		font-size: 14px;
+		font-weight: bold;
+		/*font-family: "Helvetica Neue", Futura, Verdana, sans-serif;*/
+	}
+
+	div#nav ul li{
+		letter-spacing: 1px;
+		line-height: 170%;
+	}
+
+	div#nav ul li a {
+		color: #ffffff;
+		text-decoration: none;
+	}	
+
+	div#nav ul li a:hover {
+		color: #cc0033;
+	}
+	
+	#thumbs {
+		margin-left: 200px;
+	}
+	
+	#thumbstd {
+		padding: 2px;
+		margin: 0px;
+		float: left;
+	}
+
+	#copyright {
+		font-size:8pt;
+		margin-top:50px;
+		float: left;
+		clear: left;
+  		margin-left: 2em;
+	}
+
+	#pic {
+		float: left;
+		clear: left;
+		margin: 1em;
+	}
+	
+	#mainpic img {
+		width: 100%;
+		margin-top: 2em;
+	}
+	
+	#arrows {
+		white-space:nowrap;
+	}
+	
+	#arrows img, #arrows div {
+		float: left;
+	}
+
+	img.arrow {
+		padding:0 20px;
+	}
+	
+	#caption {
+		font-size: 8pt;
+		line-height: 150%;
+	}
+	
+	#bio {
+		margin:21px;
+		float: left;
+		clear: left;
+		line-height: 150%;
+	}
+
+	#address {
+		margin: 21px 0 21px 200px;
+	}
+	
+	#topnote {
+		margin-left:200px;
+		margin-bottom:10px;
+		line-height: 150%;
+		padding-top: 2em;
+	}
+
 }
 
-div#nav ul li{
-	display: inline;
-	letter-spacing: 1px;
-	line-height: 130%;
-	padding-right: 6px;
-	border-right: 1px #ffffff solid;
-}
-
-div#nav ul li.first {
-	padding-left: 66px;
-}
-
-div#nav ul li.last {
-	border-right: 0;
-}
-
-div#nav ul li a {
-	color: #ffffff;
-	text-decoration: none;
-}
-
-div#nav ul li a:hover {
-	color: #cc0033;
-}
-
-div#topnote {
-	margin-left:70px;
-	margin-bottom:10px;
-	width:629px;
-}
-
-table#thumbs {
-	width:629px;
-	margin-left:70px;
-}
-
-td#thumbstd {
-	padding:2px;
-	margin:0px;
-}
-
-td#arrows {
-	width:200px;
-	max-width: 200px;
-	text-align:right;
-	white-space:nowrap;
-	padding-left:20px;
-}
-
-div#caption {
-	padding-right:20px;
-	font-size: 8pt;
-}
 
 h3 {
 	font-size:12pt;
@@ -110,29 +256,6 @@ h3 {
 
 .bigreg {
 	font-size:18pt;
-}
-
-div#copyright {
-	font-size:8pt;
-	margin-top:50px;
-	position: relative;
-	left: 225px;
-	width: 500px;
-}
-
-img.arrow {
-	padding:20px;
-}
-
-div#bio {
-	width:350px;
-	margin:21px;
-}
-
-div#address {
-	position:absolute;
-	top:42px;
-	left:410px;
 }
 
 div#nav ul li a.selected {
