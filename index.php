@@ -13,7 +13,7 @@ class Page
 	public function __construct() {
 		require (__DIR__ . '/photo_sections.php');
 		$local_path = '/Users/charlie/Sites/Matt Lankes/mattlankes';
-		$remote_path = '/webspace/httpdocs/mattlankes.com/index.php';
+		$remote_path = __DIR__;
 		if (is_dir($local_path)) {
 			$this->path = $local_path;
 			$this->dev = 1;
@@ -124,17 +124,22 @@ class Page
 	{
 
 		$a=$this->$control;
+		
 		if (isset($a)) {
 			$picsonpage=count($a);
 			$suffix = 1;
 		} else {
 			$dir = $this->path . '/assets/' . $control . '/pics';
-			$tmp = scandir($dir);
-			foreach ($tmp as $img) {
-				if (stripos($img, '.jpg') !== FALSE) {
-					$a[] = $img;
-				}
+			$a = array();
+			if ($handle = opendir($dir)) {
+    			while (false !== ($entry = readdir($handle))) {
+        			if (stripos($entry, '.jpg') !== FALSE) {
+						$a[] = $entry;
+					}
+    			}
+    			closedir($handle);
 			}
+
 			$picsonpage=count($a);
 			$suffix = 0;
 		}
@@ -249,10 +254,13 @@ Rick and I talked about shooting this project in a documentary style, capturing 
    				if ($suffix === 1) {
    					$src .= '.jpg';
    				}
+   				// echo $src;
    				if ( ! file_exists($this->path . $src)) {
    					$src = '/assets/'.$control.'/pics/'.$a[$i];
+   					if ($suffix === 1) {
+   						$src .= '.jpg';
+   					}
    				}
-
    				
    				print '<a href="/'.$control.'/'.$i.'"><img width="100" height="100" src="' . $src . '" alt="" /></a></div>';
    			
@@ -277,15 +285,17 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 		
 		if ( ! isset($a)) {
 			$dir = $this->path . '/assets/' . $section . '/pics';
-			$tmp = scandir($dir);
-			foreach ($tmp as $img) {
-				if (stripos($img, '.jpg') !== FALSE) {
-					$a[] = $img;
-				}
+			$a = array();
+			if ($handle = opendir($dir)) {
+    			while (false !== ($entry = readdir($handle))) {
+        			if (stripos($entry, '.jpg') !== FALSE) {
+						$a[] = $entry;
+					}
+    			}
+    			closedir($handle);
 			}
 			$suffix = 0;
 		}
-
 		
 		$picname=$a["$pic"];
 		$picsonpage=count($a);
