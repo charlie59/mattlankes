@@ -279,7 +279,6 @@ body, div, ul, li {
 	div#nav ul {
 		font-size: 14px;
 		font-weight: bold;
-		/*font-family: "Helvetica Neue", Futura, Verdana, sans-serif;*/
 	}
 
 	div#nav ul li{
@@ -416,7 +415,7 @@ body, div, ul, li {
 	#thumbs {
 		float: left;
 		clear: left;
-		margin-left: 1em;
+		margin-left: 0.4em;
 	}
 	
 	#thumbstd {

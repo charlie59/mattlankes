@@ -349,6 +349,7 @@ $page=new Page;
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <meta name="keywords" content="Matt Lankes Photography, Matt Lankes, Photography" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link type="text/css" rel="stylesheet" href="/assets/style.css" media="screen" />
 <title>Matt Lankes Photography</title>
 </head>
