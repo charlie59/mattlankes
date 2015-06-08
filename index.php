@@ -130,18 +130,21 @@ class Page
 			$suffix = 1;
 		} else {
 			$dir = $this->path . '/assets/' . $control . '/pics';
-			$a = array();
-			if ($handle = opendir($dir)) {
-    			while (false !== ($entry = readdir($handle))) {
-        			if (stripos($entry, '.jpg') !== FALSE) {
-						$a[] = $entry;
-					}
-    			}
-    			closedir($handle);
-			}
+			if (is_dir($dir)) {
+				$a = array();
+				if ($handle = opendir($dir)) {
+    				while (false !== ($entry = readdir($handle))) {
+        				if (stripos($entry, '.jpg') !== FALSE) {
+							$a[] = $entry;
+						}
+    				}
+    				closedir($handle);
+				}
 
-			$picsonpage=count($a);
-			$suffix = 0;
+				$picsonpage=count($a);
+				$suffix = 0;
+			}
+			
 		}
 		
 		// print_r($a);
@@ -304,8 +307,8 @@ Rick and I talked about shooting this project in a documentary style, capturing 
 		if ($pic==0) {$prev=$l;} else {$prev=$pic-1;}
 		if ($pic==$l) {$next=0;} else {$next=$pic+1;}
 
-		$left='<a href=\"/$section/$prev\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/left_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
-		$right='<a href=\"/$section/$next\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/right_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
+		$left='<a id=\"left\" href=\"/$section/$prev\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/left_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
+		$right='<a id=\"right\"  href=\"/$section/$next\"><img class=\"arrow\" width=\"14\" height=\"10\" src=\"/assets/right_arrow.gif\" vspace=\"2\" hspace=\"2\" /></a>';
 		eval ("\$k=\"$left\";");
 		eval ("\$j=\"$right\";");
 
